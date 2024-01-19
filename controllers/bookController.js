@@ -26,9 +26,13 @@ export const getBookController = async (req, res) => {
     console.log(queryKey);
 
     if (queryKey === "old") {
-      const date = new Date();
+      var currentDate = new Date();
+      var tenMinutesAgo = new Date(currentDate - 10 * 60 * 1000);
+      const books = await BookModel.find({
+        createdAt: { $lte: tenMinutesAgo },
+      });
+      return res.status(200).json({ books });
     }
-
     const books = await BookModel.find();
     return res.json(books);
   } catch (error) {
