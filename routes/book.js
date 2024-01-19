@@ -10,9 +10,11 @@ import {
 
 const router = express.Router();
 
-router.post("/add", verifyCreator, addBookController);
+// router.post("/add", verifyCreator, addBookController);
+router.post("/add", addBookController);
 
-router.get("/getbooks", verifyAll, getBookController);
+// router.get("/getbooks", verifyAll, getBookController);
+router.get("/getbooks", getBookController);
 
 router.get("/edit/:id", verifyCreator, editBookController);
 

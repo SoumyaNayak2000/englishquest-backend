@@ -3,8 +3,15 @@ import { BookModel } from "../models/Book.js";
 export const addBookController = async (req, res) => {
   try {
     const { name, author, imageUrl, price } = req.body;
+    const createdTime = new Date();
     console.log(name, author, imageUrl, price);
-    const newBook = new BookModel({ name, author, imageUrl, price });
+    const newBook = new BookModel({
+      name,
+      author,
+      imageUrl,
+      price,
+      createdTime,
+    });
     await newBook.save();
     return res.json({ bookAdded: true });
   } catch (error) {
@@ -14,6 +21,14 @@ export const addBookController = async (req, res) => {
 
 export const getBookController = async (req, res) => {
   try {
+    const query = req.query;
+    const queryKey = Object.keys(query)[0];
+    console.log(queryKey);
+
+    if (queryKey === "old") {
+      const date = new Date();
+    }
+
     const books = await BookModel.find();
     return res.json(books);
   } catch (error) {
