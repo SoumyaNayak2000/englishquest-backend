@@ -30,3 +30,7 @@ app.use("/api/v1/creator", dashBoardRouter);
 app.listen(process.env.PORT, () => {
   console.log("server is running");
 });
+
+app.get("/", (req, res) => {
+  res.send("Working fine");
+});
