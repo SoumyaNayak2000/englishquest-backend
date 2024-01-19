@@ -12,7 +12,12 @@ import { BookRouter } from "./routes/book.js";
 const app = express();
 
 app.use(express.json());
-app.use(cors());
+app.use(
+  cors({
+    // credentials: true,
+    origin: ["https://englishquest-frontend.vercel.app/"],
+  })
+);
 app.use(cookieParser());
 
 dotenv.config();
