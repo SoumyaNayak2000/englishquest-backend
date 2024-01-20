@@ -10,8 +10,6 @@ import "./db.js";
 import { BookRouter } from "./routes/book.js";
 
 const app = express();
-
-app.use(express.json());
 app.use(
   cors({
     origin: "https://englishquest-frontend.vercel.app/",
@@ -19,8 +17,10 @@ app.use(
   })
 );
 
+app.use(express.json());
+
 // app.use(function (req, res, next) {
-//   res.setHeader("Access-Control-Allow-Origin", "http://localhost:9000");
+//   res.setHeader("Access-Control-Allow-Origin", "https://englishquest-frontend.vercel.app/);
 //   res.setHeader(
 //     "Access-Control-Allow-Methods",
 //     "GET, POST, OPTIONS, PUT, PATCH, DELETE"
